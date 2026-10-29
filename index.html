@@ -7,144 +7,234 @@
 <meta name="description" content="Blueprint tim AI agent konten Instagram untuk Rumah Makan & Catering Chiangkong, Surabaya.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
   --maroon:#5E1416;
+  --maroon-deep:#4A0F11;
   --lacquer:#9E2A22;
   --gold:#E8C176;
   --cream:#F5E9D0;
   --paper:#FBF5E8;
+  --paper-2:#F3E6CC;
   --ink:#2A1A16;
-  --muted:#7A6457;
+  --muted:#6E594C;
   --line:#E3D3B4;
-  --display:"Poppins",system-ui,sans-serif;
+  --font:"Poppins",system-ui,sans-serif;
   --han:"Noto Serif SC","Songti SC",serif;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur:.7s;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:var(--lacquer)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-.prose{max-width:68ch}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.prose{max-width:66ch}
+p{margin:0 0 14px}
+strong{font-weight:600}
 
 /* ---------- Hero ---------- */
 .hero{background:var(--maroon);color:var(--cream);position:relative;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:center;padding-top:56px;padding-bottom:64px}
-.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.1;font-weight:800;margin:0 0 20px;letter-spacing:-.02em;color:var(--cream)}
-.hero p{font-size:1.12rem;max-width:46ch;margin:0 0 28px;color:#EBD9BB}
-.han{font-family:var(--han);font-weight:900;color:var(--gold);font-size:clamp(6rem,13vw,10.5rem);line-height:1;text-align:center;margin:0 auto;
-  animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center;min-height:min(86vh,720px);padding-top:64px;padding-bottom:72px}
+.hero h1{font-size:clamp(2.8rem,7.4vw,5.6rem);line-height:1.04;font-weight:800;margin:0 0 26px;letter-spacing:-.03em;color:var(--cream)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln span{display:block}
+.hero .lead{font-size:clamp(1.08rem,1.6vw,1.25rem);max-width:44ch;margin:0 0 18px;color:#EEDDBF}
+.hero .facts{font-size:1rem;color:var(--gold);font-weight:500;margin:0}
+
+.mark{position:relative;justify-self:center;text-align:center}
+.han{font-family:var(--han);font-weight:900;color:var(--gold);font-size:clamp(6rem,13vw,11rem);line-height:1;margin:0}
 .han span{display:block}
-.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
-.hero-meta li{border:1px solid rgba(232,193,118,.45);color:var(--gold);padding:6px 14px;border-radius:999px;font-size:.88rem;font-weight:500}
-.toc{background:var(--lacquer);color:var(--cream)}
-.toc ol{display:flex;flex-wrap:wrap;gap:4px 24px;margin:0;padding:14px 20px;list-style:none;max-width:1040px;margin-inline:auto;font-size:.92rem}
-.toc a{color:var(--cream);text-decoration:none;font-weight:500}
-.toc a:hover{text-decoration:underline}
-.toc span{color:var(--gold);font-weight:700;margin-right:6px}
+.steam{position:absolute;left:50%;bottom:100%;width:130px;height:130px;margin-left:-65px;margin-bottom:-6px;pointer-events:none;overflow:visible}
+.steam.s2{display:none}
+.steam path{fill:none;stroke:var(--gold);stroke-width:7;stroke-linecap:round;opacity:0}
+
+/* Motion #3 Mask / wipe reveal — hero headline */
+.js .hero h1 .ln span{transform:translateY(105%)}
+.js.ready .hero h1 .ln span{transform:none;transition:transform 1s var(--ease-out)}
+.js.ready .hero h1 .ln:nth-child(2) span{transition-delay:.12s}
+.js .hero .lead,.js .hero .facts{opacity:0;transform:translateY(16px)}
+.js.ready .hero .lead,.js.ready .hero .facts{opacity:1;transform:none;transition:opacity .8s var(--ease-out) .45s,transform .8s var(--ease-out) .45s}
+.js.ready .hero .facts{transition-delay:.6s}
+
+/* Motion #8 Logo twist & drop — 长江 */
+.js .han span{opacity:0;transform:translateY(-90px) rotate(-28deg) scale(.8)}
+.js.ready .han span{animation:twistdrop 1.15s var(--ease-out) forwards}
+.js.ready .han span:nth-child(2){animation-delay:.18s}
+@keyframes twistdrop{
+  0%{opacity:0;transform:translateY(-90px) rotate(-28deg) scale(.8)}
+  60%{opacity:1;transform:translateY(8px) rotate(5deg) scale(1.03)}
+  100%{opacity:1;transform:none}
+}
+
+/* Motion #9 Uap / asap — steam above 长江 */
+.js.ready .steam path{animation:steam 4.2s ease-in-out infinite}
+.js.ready .steam path:nth-child(2){animation-delay:1.4s}
+.js.ready .steam path:nth-child(3){animation-delay:2.8s}
+@keyframes steam{
+  0%{opacity:0;transform:translateY(30px) scaleY(.85)}
+  30%{opacity:.9}
+  100%{opacity:0;transform:translateY(-40px) scaleY(1.1)}
+}
+
+.toc{background:var(--lacquer);color:var(--cream);position:sticky;top:0;z-index:10}
+.toc ol{display:flex;flex-wrap:wrap;gap:2px 8px;margin:0 auto;padding:8px 16px;list-style:none;max-width:1080px;font-size:.9rem}
+.toc a{display:inline-block;color:var(--cream);text-decoration:none;font-weight:500;padding:8px 12px;border-radius:999px;transition:background-color .2s,color .2s}
+.toc a:hover,.toc a.on{background:var(--maroon-deep);color:var(--gold)}
+.toc a:active{transform:scale(.97)}
 
 /* ---------- Sections ---------- */
-section.q{padding:72px 0;border-bottom:1px solid var(--line)}
-.qhead{display:grid;grid-template-columns:88px 1fr;gap:20px;align-items:start;margin-bottom:28px}
-.qnum{font-size:3.4rem;font-weight:800;line-height:1;color:var(--lacquer)}
-.qhead h2{font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.15;margin:4px 0 6px;font-weight:700}
-.qhead .ask{color:var(--muted);margin:0;font-size:.98rem}
-.body{margin-left:108px}
-h3{font-size:1.4rem;line-height:1.3;margin:36px 0 12px;font-weight:700}
-p{margin:0 0 14px}
-ul.plain{margin:0 0 14px;padding-left:20px}
-ul.plain li{margin:6px 0}
-strong{font-weight:600}
+section.q{padding:clamp(80px,11vw,140px) 0;scroll-margin-top:56px}
+section.q:nth-of-type(even){background:var(--paper-2)}
+.qhead{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:start;margin-bottom:36px}
+.qnum{font-size:clamp(3.4rem,6vw,4.8rem);font-weight:800;line-height:.95;color:var(--lacquer);letter-spacing:-.03em}
+.qhead h2{font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.2;margin:4px 0 8px;font-weight:800;letter-spacing:-.02em}
+.qhead .ask{color:var(--muted);margin:0;font-size:1rem}
+.body{margin-left:130px}
+h3{font-size:1.4rem;line-height:1.3;margin:40px 0 14px;font-weight:700}
 
-/* Q1 name block */
-.namecard{display:flex;gap:28px;align-items:center;background:var(--cream);border-left:6px solid var(--gold);padding:24px 28px;margin-bottom:24px}
+/* entrance stagger (heading → text → visual) */
+.js .rv{opacity:0;transform:translateY(24px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity var(--dur) var(--ease-out),transform var(--dur) var(--ease-out);transition-delay:calc(var(--i,0) * 80ms)}
+
+/* Q1 */
+.namecard{display:flex;gap:28px;align-items:center;background:var(--cream);border-left:6px solid var(--gold);padding:26px 30px;margin-bottom:28px}
+section.q:nth-of-type(even) .namecard{background:var(--paper)}
 .namecard .mini{font-family:var(--han);font-weight:900;font-size:3.6rem;color:var(--maroon);line-height:1}
-.namecard b{display:block;font-size:1.5rem;font-weight:800;line-height:1.2}
+.namecard b{display:block;font-size:1.55rem;font-weight:800;line-height:1.2}
 .namecard i{font-style:normal;color:var(--muted)}
 
-/* Q2 problem / target */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+/* Q2 */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:40px}
 .split h3{margin-top:0}
-.kpi{border-top:3px solid var(--maroon);padding-top:14px}
-.kpi dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px}
-.kpi dt{font-weight:700;color:var(--maroon)}
-.kpi dd{margin:0}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin:0 0 10px}
+.kpi{background:var(--maroon);color:var(--cream);padding:28px 30px}
+.kpi h3{color:var(--gold)}
+.kpi dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 18px}
+.kpi dt{font-weight:700;color:var(--gold)}
+.kpi dd{margin:0;color:#F1E3C8}
 
-/* Q3 verdict */
-.verdict{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;color:var(--maroon);margin:0 0 18px;line-height:1.3}
-.compare{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:.96rem}
-.compare th,.compare td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-.compare thead th{background:var(--maroon);color:var(--cream);font-weight:600}
-.compare tbody th{font-weight:600;width:28%}
+/* Q3 */
+.verdict{font-size:clamp(1.45rem,3vw,2rem);font-weight:700;color:var(--maroon);margin:0 0 22px;line-height:1.3;max-width:28ch}
+.compare{width:100%;border-collapse:collapse;margin:8px 0 22px;font-size:1rem;background:var(--paper)}
+.compare th,.compare td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{background:var(--maroon);color:var(--cream);font-weight:600;border:none}
+.compare tbody th{font-weight:600;width:26%}
+.compare td:last-child{background:#FFF8E6}
 
-/* Q4 bon rail — the memorable piece */
-.rail-wrap{margin:8px 0 36px;margin-left:-108px}
-.rail-label{font-size:.9rem;color:var(--muted);margin:0 0 10px 108px}
-.boss{background:var(--maroon);color:var(--cream);padding:20px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin-bottom:0}
-.boss .seal{width:62px;height:62px;border-radius:50%;background:var(--gold);color:var(--maroon);display:grid;place-items:center;font-family:var(--han);font-weight:900;font-size:1.6rem}
+/* Q4 bon rail */
+.rail-wrap{margin:8px 0 48px;margin-left:-130px}
+.rail-label{font-size:1rem;color:var(--muted);margin:0 0 12px 130px;max-width:60ch}
+.boss{background:var(--maroon);color:var(--cream);padding:22px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.boss .seal{width:64px;height:64px;border-radius:50%;background:var(--gold);color:var(--maroon);display:grid;place-items:center;font-family:var(--han);font-weight:900;font-size:1.7rem}
 .boss b{font-size:1.2rem;display:block}
-.boss span{color:#E6D2AE;font-size:.95rem}
-.rail{background:linear-gradient(#B8B1A6,#8E877C);height:12px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.2)}
-.tickets{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:0 12px}
-.ticket{background:#FFFDF7;border:1px solid var(--line);border-top:none;padding:16px 14px 18px;position:relative;font-size:.9rem;line-height:1.5;
-  box-shadow:0 6px 0 -3px #EFE3CB;transform-origin:top center}
-.ticket:nth-child(odd){transform:rotate(-1.2deg)}
-.ticket:nth-child(even){transform:rotate(1deg)}
+.boss span{color:#E6D2AE;font-size:1rem}
+.rail{background:#9C958A;height:12px}
+.tickets{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:0 12px;perspective:900px}
+.ticket{background:#FFFDF7;padding:18px 14px 20px;position:relative;font-size:.9rem;line-height:1.5;transform-origin:top center;
+  transition:transform .35s var(--ease-out),background-color .2s}
 .ticket::before{content:"";position:absolute;top:-6px;left:50%;width:22px;height:10px;margin-left:-11px;background:var(--gold);border-radius:0 0 4px 4px}
 .ticket .no{font-weight:800;color:var(--lacquer);font-size:.82rem}
-.ticket b{display:block;font-size:1rem;margin:2px 0 6px;line-height:1.25}
-.ticket .when{display:block;color:var(--muted);font-size:.8rem;border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
-.ticket .chat{display:table;font-size:.75rem;font-weight:600;padding:1px 8px;border-radius:3px;margin-bottom:6px}
+.ticket b{display:block;font-size:1.02rem;margin:2px 0 8px;line-height:1.25}
+.ticket .when{display:block;color:var(--maroon);font-weight:600;font-size:.82rem;margin-top:12px;background:var(--cream);padding:4px 8px}
+.ticket .chat,.legend .chat{display:table;font-size:.82rem;font-weight:600;padding:3px 10px;border-radius:3px;margin-bottom:8px;white-space:nowrap}
+.legend .chat{display:inline-block;margin:0 4px 0 0}
 .chatA{background:#F6E2B5;color:#6A4A0E}
 .chatB{background:#F2CFC8;color:#7A1F17}
 .chatC{background:#DCE6D7;color:#2F4A28}
-.legend{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0 0 108px;font-size:.85rem;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin:22px 0 0 130px;font-size:.9rem;color:var(--muted)}
+/* Motion #19 Kartu miring 3D — bon swing in from the rail, tilt on hover */
+.ticket{--tilt:-1.2deg}
+.ticket:nth-child(even){--tilt:1deg}
+.ticket{transform:rotate(var(--tilt))}
+.js .ticket{transform:rotateX(-88deg);opacity:0}
+.js .tickets.in .ticket{animation:swing .9s var(--ease-out) forwards;animation-delay:calc(var(--i) * 90ms)}
+@keyframes swing{
+  0%{transform:rotateX(-88deg);opacity:0}
+  55%{transform:rotateX(14deg) rotate(var(--tilt));opacity:1}
+  80%{transform:rotateX(-5deg) rotate(var(--tilt))}
+  100%{transform:rotateX(0) rotate(var(--tilt));opacity:1}
+}
+.js .tickets.done .ticket{animation:none;opacity:1;transform:rotate(var(--tilt))}
+.ticket:hover,.ticket:focus-within{transform:perspective(700px) rotateX(8deg) rotateY(-6deg) rotate(0) translateY(4px)!important;background:#FFF6DF}
 
-.members{width:100%;border-collapse:collapse;font-size:.94rem;margin:10px 0 18px}
-.members th,.members td{padding:12px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.members thead th{font-weight:600;color:var(--maroon);border-bottom:2px solid var(--maroon)}
+.members{width:100%;border-collapse:collapse;font-size:1rem;margin:10px 0 18px}
+.members th,.members td{padding:13px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.members thead th{font-weight:600;color:var(--cream);background:var(--maroon);border:none}
+.members tbody tr:nth-child(odd){background:rgba(255,253,247,.6)}
 .members td:first-child{font-weight:600;white-space:nowrap}
-.flow{list-style:none;margin:10px 0 18px;padding:0;counter-reset:f}
-.flow li{counter-increment:f;display:grid;grid-template-columns:92px 1fr;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line)}
-.flow li b{color:var(--lacquer)}
-.rules{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
-.rule{background:var(--cream);padding:16px 18px}
-.rule b{display:block;color:var(--maroon);margin-bottom:4px}
+
+/* Motion #43 Timeline emas + node flip 3D */
+.timeline{list-style:none;margin:14px 0 28px;padding:0 0 0 34px;position:relative}
+.timeline::before,.timeline::after{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:4px;border-radius:2px}
+.timeline::before{background:var(--line)}
+.timeline::after{background:var(--gold);transform-origin:top;transform:scaleY(var(--p,1))}
+.timeline li{position:relative;display:grid;grid-template-columns:110px 1fr;gap:16px;padding:12px 0 18px;perspective:600px}
+.timeline .node{position:absolute;left:-34px;top:14px;width:26px;height:26px;border-radius:50%;background:var(--maroon);border:4px solid var(--gold)}
+.timeline .node{z-index:1;transition:transform .7s var(--ease-out),background-color .3s,border-color .3s}
+.timeline li > b,.timeline li > span{transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.js .timeline li:not(.hit) .node{transform:rotateY(180deg) scale(.7);background:var(--paper-2);border-color:var(--line)}
+.js .timeline li:not(.hit) > b,.js .timeline li:not(.hit) > span{opacity:.45;transform:translateX(-10px)}
+.timeline li.hit .node{background:var(--gold);border-color:var(--maroon)}
+.timeline li b{color:var(--lacquer)}
+
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:14px;max-width:880px}
+.rule{padding:4px 0 4px 18px;border-left:4px solid var(--gold)}
+.rule b{display:block;color:var(--maroon);margin-bottom:6px;font-size:1.05rem}
 
 /* Q5 memory */
-.mem{display:grid;gap:0;margin:8px 0 20px}
-.mem-row{display:grid;grid-template-columns:200px 1fr 190px;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
-.mem-row h3{margin:0;font-size:1.05rem;color:var(--maroon)}
+.mem{display:grid;gap:6px;margin:8px 0 22px}
+.mem-head,.mem-row{display:grid;grid-template-columns:200px 1fr 200px;gap:20px}
+.mem-head{font-size:.9rem;color:var(--muted);font-weight:600;padding:0 22px 4px}
+.mem-row{background:var(--cream);padding:20px 22px;transition:background-color .2s}
+.mem-row:hover{background:#F8EED9}
+.mem-row h3{margin:0;font-size:1.08rem;color:var(--maroon)}
 .mem-row ul{margin:0;padding-left:18px}
 .mem-row li{margin:3px 0}
-.mem-row .where{font-size:.86rem;color:var(--muted)}
-.mem-head{font-size:.85rem;color:var(--muted);font-weight:600;border-bottom:2px solid var(--maroon);padding-bottom:8px}
-.never{background:var(--maroon);color:var(--cream);padding:22px 26px;margin-top:20px}
+.mem-row .where{font-size:.9rem;color:var(--muted)}
+.never{background:var(--maroon);color:var(--cream);padding:26px 30px;margin-top:24px}
 .never h3{color:var(--gold);margin-top:0}
 .never ul{margin:0;padding-left:20px}
 
-footer{background:var(--ink);color:#CDBBA6;padding:36px 0;font-size:.9rem}
+footer{background:var(--ink);color:#CDBBA6;padding:56px 0 40px;font-size:.9rem}
+footer .big{font-size:clamp(2rem,6vw,4rem);font-weight:800;color:var(--cream);letter-spacing:-.03em;line-height:1.05;margin:0 0 18px}
 footer p{margin:0 0 6px}
 
 @media (max-width:860px){
-  .hero .wrap{grid-template-columns:1fr;padding-top:40px}
-  .han{font-size:5rem;text-align:left;margin:0;order:-1}.han span{display:inline}
-  .qhead{grid-template-columns:1fr;gap:4px}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:96px}
+  .mark{order:-1;justify-self:start}
+  .han{font-size:5rem;text-align:left}
+  .han span{display:inline-block}
+  .steam{left:40px;width:80px;height:80px;margin-left:-40px;margin-bottom:-4px}
+  .steam.s2{display:block;left:120px}
+  .steam.s2 path{animation-delay:.7s!important}
+  .steam.s2 path:nth-child(2){animation-delay:2.1s!important}
+  .steam.s2 path:nth-child(3){animation-delay:3.5s!important}
+  .qhead{grid-template-columns:1fr;gap:6px}
   .body{margin-left:0}
   .rail-wrap{margin-left:0}
   .rail-label,.legend{margin-left:0}
   .tickets{grid-template-columns:repeat(2,1fr)}
   .split,.rules{grid-template-columns:1fr}
-  .mem-row{grid-template-columns:1fr;gap:6px}
+  .mem-row{grid-template-columns:1fr;gap:8px}
   .mem-head{display:none}
   .members,.compare{display:block;overflow-x:auto}
-  .flow li{grid-template-columns:1fr;gap:2px}
+  .timeline li{grid-template-columns:1fr;gap:2px}
+  .toc ol{padding:6px 10px}
+  .toc a{padding:6px 10px}
 }
 @media (prefers-reduced-motion:reduce){
-  *{animation:none!important;scroll-behavior:auto!important}
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .hero h1 .ln span,.js .hero .lead,.js .hero .facts,.js .han span,.js .ticket,
+  .js .timeline .node,.js .timeline li > b,.js .timeline li > span{opacity:1!important;transform:none!important}
+  .timeline::after{transform:none!important}
+  .ticket{transform:rotate(var(--tilt))!important}
+  .steam{display:none}
 }
 </style>
 </head>
@@ -153,25 +243,33 @@ footer p{margin:0 0 6px}
 <header class="hero">
   <div class="wrap">
     <div>
-      <h1>Soul Tim Chiang Kong</h1>
-      <p>Tim AI agent yang menjalankan konten Instagram Rumah Makan &amp; Catering Chiangkong, Surabaya. Owner tetap di dapur, konten tetap tayang tiap minggu.</p>
-      <ul class="hero-meta">
-        <li>1 Manager + 6 agent</li>
-        <li>Siklus mingguan</li>
-        <li>Target: order catering harian</li>
-      </ul>
+      <h1><span class="ln"><span>Soul Tim</span></span><span class="ln"><span>Chiang Kong</span></span></h1>
+      <p class="lead">Tim AI agent yang menjalankan konten Instagram Rumah Makan &amp; Catering Chiangkong, Surabaya. Owner tetap di dapur, konten tetap tayang tiap minggu.</p>
+      <p class="facts">Satu Manager, enam agent, satu tujuan: order catering harian naik.</p>
     </div>
-    <div class="han" aria-hidden="true"><span>长</span><span>江</span></div>
+    <div class="mark" aria-hidden="true">
+      <svg class="steam" viewBox="0 0 150 160">
+        <path d="M45 150 C25 115 65 95 45 60 C30 35 55 20 50 5"/>
+        <path d="M78 150 C58 112 98 92 78 55 C63 30 88 15 83 0"/>
+        <path d="M110 150 C90 118 130 98 110 64 C95 40 120 25 115 10"/>
+      </svg>
+      <svg class="steam s2" viewBox="0 0 150 160">
+        <path d="M45 150 C25 115 65 95 45 60 C30 35 55 20 50 5"/>
+        <path d="M78 150 C58 112 98 92 78 55 C63 30 88 15 83 0"/>
+        <path d="M110 150 C90 118 130 98 110 64 C95 40 120 25 115 10"/>
+      </svg>
+      <p class="han"><span>长</span><span>江</span></p>
+    </div>
   </div>
 </header>
 
 <nav class="toc" aria-label="Daftar isi">
   <ol>
-    <li><a href="#q1"><span>01</span>Nama sistem</a></li>
-    <li><a href="#q2"><span>02</span>Masalah</a></li>
-    <li><a href="#q3"><span>03</span>Sendiri atau tim</a></li>
-    <li><a href="#q4"><span>04</span>Anggota &amp; pola kerja</a></li>
-    <li><a href="#q5"><span>05</span>Memori</a></li>
+    <li><a href="#q1">Nama sistem</a></li>
+    <li><a href="#q2">Masalah</a></li>
+    <li><a href="#q3">Sendiri atau tim</a></li>
+    <li><a href="#q4">Anggota &amp; pola kerja</a></li>
+    <li><a href="#q5">Memori</a></li>
   </ol>
 </nav>
 
@@ -180,20 +278,20 @@ footer p{margin:0 0 6px}
 <!-- 01 -->
 <section class="q" id="q1">
   <div class="wrap">
-    <div class="qhead">
-      <div class="qnum">01</div>
+    <div class="qhead rv">
+      <div class="qnum">01</div><!-- taste-skill-ignore: mirrors the assignment brief, questions 01–05 -->
       <div>
         <h2>Nama sistem</h2>
         <p class="ask">Nama sistem / solusi agen kamu</p>
       </div>
     </div>
     <div class="body prose">
-      <div class="namecard">
+      <div class="namecard rv" style="--i:1">
         <div class="mini" aria-hidden="true">长江</div>
         <div><b>Soul Tim Chiang Kong</b><i>Tim konten Instagram @chiangkong.sby</i></div>
       </div>
-      <p><strong>Chiangkong (长江)</strong> adalah rumah makan dan catering Chinese Food di Kusuma Bangsa, Surabaya. Layanannya: catering harian untuk keluarga, makan di depot, bungkus/ojol, dan ricebox untuk acara.</p>
-      <p><strong>"Soul"</strong> diambil dari cara tim ini dibangun. Setiap agent punya satu file <em>soul.md</em> berisi identitas, misi, skill yang wajib dipakai, format output, dan aturan yang tidak boleh dilanggar. Jadi setiap agent bekerja dengan "jiwa" dan standar yang sama setiap kali dipanggil, bukan menebak dari nol.</p>
+      <p class="rv" style="--i:2"><strong>Chiangkong (长江)</strong> adalah rumah makan dan catering Chinese Food di Kusuma Bangsa, Surabaya. Layanannya: catering harian untuk keluarga, makan di depot, bungkus/ojol, dan ricebox untuk acara.</p>
+      <p class="rv" style="--i:3"><strong>"Soul"</strong> diambil dari cara tim ini dibangun. Setiap agent punya satu file <em>soul.md</em> berisi identitas, misi, skill yang wajib dipakai, format output, dan aturan yang tidak boleh dilanggar. Jadi setiap agent bekerja dengan "jiwa" dan standar yang sama setiap kali dipanggil, bukan menebak dari nol.</p>
     </div>
   </div>
 </section>
@@ -201,8 +299,8 @@ footer p{margin:0 0 6px}
 <!-- 02 -->
 <section class="q" id="q2">
   <div class="wrap">
-    <div class="qhead">
-      <div class="qnum">02</div>
+    <div class="qhead rv">
+      <div class="qnum">02</div><!-- taste-skill-ignore: mirrors the assignment brief, questions 01–05 -->
       <div>
         <h2>Masalah yang ingin ditangani</h2>
         <p class="ask">Kenapa sistem ini perlu ada</p>
@@ -210,7 +308,7 @@ footer p{margin:0 0 6px}
     </div>
     <div class="body">
       <div class="split">
-        <div>
+        <div class="rv" style="--i:1">
           <h3>Masalahnya</h3>
           <ul class="plain">
             <li><strong>Owner ikut masak.</strong> Saat ramai, owner yang mengatur urutan masak. Waktu untuk riset, menulis naskah, dan edit video hampir tidak ada.</li>
@@ -220,7 +318,7 @@ footer p{margin:0 0 6px}
             <li><strong>Satu chat AI untuk semua tugas</strong> membuat percakapan terlalu panjang, aturan mudah terlupa, dan kualitasnya tidak stabil.</li>
           </ul>
         </div>
-        <div class="kpi">
+        <div class="kpi rv" style="--i:2">
           <h3>Target yang diukur</h3>
           <dl>
             <dt>Bisnis</dt><dd>Order catering harian naik. Ini prioritas omset 3 bulan ke depan.</dd>
@@ -238,16 +336,16 @@ footer p{margin:0 0 6px}
 <!-- 03 -->
 <section class="q" id="q3">
   <div class="wrap">
-    <div class="qhead">
-      <div class="qnum">03</div>
+    <div class="qhead rv">
+      <div class="qnum">03</div><!-- taste-skill-ignore: mirrors the assignment brief, questions 01–05 -->
       <div>
         <h2>Agen berjalan sendiri atau dalam tim?</h2>
         <p class="ask">Pilihan arsitektur dan alasannya</p>
       </div>
     </div>
     <div class="body prose">
-      <p class="verdict">Dalam tim: 1 Manager sebagai orchestrator, membawahi 6 agent spesialis.</p>
-      <table class="compare">
+      <p class="verdict rv" style="--i:1">Dalam tim: 1 Manager sebagai orchestrator, membawahi 6 agent spesialis.</p>
+      <table class="compare rv" style="--i:2">
         <thead><tr><th scope="col"></th><th scope="col">1 agent sendirian</th><th scope="col">Tim 7 agent</th></tr></thead>
         <tbody>
           <tr><th scope="row">Alat kerja</th><td>Satu agent harus pegang riset data, edit video, upload, dan analisis sekaligus.</td><td>Tiap agent pegang alatnya sendiri: Apify untuk riset, ffmpeg untuk video, Instagram untuk upload, Excel untuk laporan.</td></tr>
@@ -256,7 +354,7 @@ footer p{margin:0 0 6px}
           <tr><th scope="row">Saat gagal</th><td>Sulit tahu bagian mana yang salah.</td><td>Langsung ketahuan agent mana yang perlu mengulang.</td></tr>
         </tbody>
       </table>
-      <p>Tim ini tetap <strong>melibatkan manusia</strong> di titik penting. Steven mengirim footage asli dan menjawab fakta yang belum pasti. Ia juga harus menyetujui setiap konten sebelum upload, mulai Konten #2. Agent tidak boleh upload tanpa persetujuan itu.</p>
+      <p class="rv" style="--i:3">Tim ini tetap <strong>melibatkan manusia</strong> di titik penting. Steven mengirim footage asli dan menjawab fakta yang belum pasti. Ia juga harus menyetujui setiap konten sebelum upload, mulai Konten #2. Agent tidak boleh upload tanpa persetujuan itu.</p>
     </div>
   </div>
 </section>
@@ -264,8 +362,8 @@ footer p{margin:0 0 6px}
 <!-- 04 -->
 <section class="q" id="q4">
   <div class="wrap">
-    <div class="qhead">
-      <div class="qnum">04</div>
+    <div class="qhead rv">
+      <div class="qnum">04</div><!-- taste-skill-ignore: mirrors the assignment brief, questions 01–05 -->
       <div>
         <h2>Anggota tim &amp; pola kerja sama</h2>
         <p class="ask">Siapa saja anggotanya dan bagaimana mereka bekerja bersama</p>
@@ -273,29 +371,29 @@ footer p{margin:0 0 6px}
     </div>
     <div class="body">
       <div class="rail-wrap">
-        <p class="rail-label">Seperti bon pesanan di dapur: Manager menggantung tugas, agent mengerjakannya satu per satu dari kiri ke kanan.</p>
-        <div class="boss">
+        <p class="rail-label rv">Seperti bon pesanan di dapur: Manager menggantung tugas, agent mengerjakannya satu per satu dari kiri ke kanan.</p>
+        <div class="boss rv" style="--i:1">
           <div class="seal" aria-hidden="true">长</div>
           <div><b>@Manager_Bot, Lead Orchestrator</b><span>Satu-satunya yang bicara dengan Steven. Tidak membuat konten. Memberi tugas, memeriksa hasil, menjaga jadwal.</span></div>
         </div>
         <div class="rail" aria-hidden="true"></div>
         <div class="tickets">
-          <article class="ticket"><span class="no">Agent 1</span><b>Trend Research</b><span class="chat chatA">Chat A</span>Cari pola Reels kuliner yang sedang viral tahun ini, lalu ubah jadi ide.<span class="when">H1 Kamis</span></article>
-          <article class="ticket"><span class="no">Agent 2</span><b>Competitor Analysis</b><span class="chat chatA">Chat A</span>Bedah konten viral kompetitor dan cari celah yang belum diambil.<span class="when">Tiap 4 minggu</span></article>
-          <article class="ticket"><span class="no">Agent 3</span><b>Scriptwriter</b><span class="chat chatA">Chat A</span>Ubah ide jadi naskah ≤60 detik: hook, shot list, CTA. Hasilnya Brief Konten.<span class="when">H1–H3</span></article>
-          <article class="ticket"><span class="no">Agent 4</span><b>Video Editor</b><span class="chat chatB">Chat B</span>Rakit footage dan motion design jadi MP4 9:16 siap upload.<span class="when">H4–H11</span></article>
-          <article class="ticket"><span class="no">Agent 5</span><b>Upload</b><span class="chat chatB">Chat B</span>Tulis caption, hashtag, tag lokasi, lalu upload sesuai jadwal.<span class="when">H14 Rabu</span></article>
-          <article class="ticket"><span class="no">Agent 6</span><b>Performance Report</b><span class="chat chatC">Siklus berikutnya</span>Ukur hasil konten, jadikan pelajaran untuk ide berikutnya.<span class="when">H+3 setelah tayang</span></article>
+          <article class="ticket" tabindex="0" style="--i:0"><span class="no">Agent 1</span><b>Trend Research</b><span class="chat chatA">Chat A</span>Cari pola Reels kuliner yang sedang viral tahun ini, lalu ubah jadi ide.<span class="when">H1 Kamis</span></article>
+          <article class="ticket" tabindex="0" style="--i:1"><span class="no">Agent 2</span><b>Competitor Analysis</b><span class="chat chatA">Chat A</span>Bedah konten viral kompetitor dan cari celah yang belum diambil.<span class="when">Tiap 4 minggu</span></article>
+          <article class="ticket" tabindex="0" style="--i:2"><span class="no">Agent 3</span><b>Scriptwriter</b><span class="chat chatA">Chat A</span>Ubah ide jadi naskah ≤60 detik: hook, shot list, CTA. Hasilnya Brief Konten.<span class="when">H1–H3</span></article>
+          <article class="ticket" tabindex="0" style="--i:3"><span class="no">Agent 4</span><b>Video Editor</b><span class="chat chatB">Chat B</span>Rakit footage dan motion design jadi MP4 9:16 siap upload.<span class="when">H4–H11</span></article>
+          <article class="ticket" tabindex="0" style="--i:4"><span class="no">Agent 5</span><b>Upload</b><span class="chat chatB">Chat B</span>Tulis caption, hashtag, tag lokasi, lalu upload sesuai jadwal.<span class="when">H14 Rabu</span></article>
+          <article class="ticket" tabindex="0" style="--i:5"><span class="no">Agent 6</span><b>Performance Report</b><span class="chat chatC">Siklus berikutnya</span>Ukur hasil konten, jadikan pelajaran untuk ide berikutnya.<span class="when">H+3 setelah tayang</span></article>
         </div>
-        <div class="legend">
-          <span><span class="chat chatA">Chat A</span> Ide &amp; Naskah, di Claude Chat</span>
-          <span><span class="chat chatB">Chat B</span> Produksi, di tab Code Claude Desktop</span>
-          <span><span class="chat chatC">Siklus berikutnya</span> laporan dibawa ke Chat A konten berikutnya</span>
+        <div class="legend rv">
+          <span><span class="chat chatA">Chat A</span>Ide &amp; Naskah, di Claude Chat</span>
+          <span><span class="chat chatB">Chat B</span>Produksi, di tab Code Claude Desktop</span>
+          <span><span class="chat chatC">Siklus berikutnya</span>laporan dibawa ke Chat A konten berikutnya</span>
         </div>
       </div>
 
-      <h3>Detail anggota</h3>
-      <table class="members">
+      <h3 class="rv">Detail anggota</h3>
+      <table class="members rv" style="--i:1">
         <thead><tr><th scope="col">Agent</th><th scope="col">Tugas utama</th><th scope="col">Skill yang wajib dipakai</th><th scope="col">Hasil kerja</th></tr></thead>
         <tbody>
           <tr><td>Manager</td><td>Tetapkan pilar &amp; tanggal upload, minta footage, cek fakta, QC, minta persetujuan</td><td>chief-content-officer (tiap 4 minggu, untuk ranking ide)</td><td>Rencana siklus, checkpoint approval</td></tr>
@@ -308,26 +406,26 @@ footer p{margin:0 0 6px}
         </tbody>
       </table>
 
-      <h3>Pola kerja sama: estafet lewat satu pusat</h3>
-      <div class="prose">
+      <h3 class="rv">Pola kerja sama: estafet lewat satu pusat</h3>
+      <div class="prose rv" style="--i:1">
         <p>Pola yang dipakai adalah <strong>orchestrator–worker berurutan</strong>. Setiap agent menyerahkan hasilnya ke Manager. Manager memeriksa, lalu memberi tugas ke agent berikutnya. Agent tidak boleh saling memberi tugas langsung.</p>
       </div>
-      <ol class="flow">
-        <li><b>H1 Kamis</b><span>Manager menetapkan pilar konten (A Catering harian, B Menu buku, atau C Ricebox). Trend Research mulai riset. Tiap 4 minggu, Competitor Analysis ikut.</span></li>
-        <li><b>H1–H3</b><span>Scriptwriter menulis naskah. Manager memeriksa, lalu menutup Chat A dengan Brief Konten dan pesan "pindah ke tab Code".</span></li>
-        <li><b>H4 Minggu</b><span>Manager meminta footage spesifik ke Steven, sekaligus fakta yang akan tampil di layar.</span></li>
-        <li><b>H4–H11</b><span>Video Editor merakit MP4 di Chat B. Manager memeriksa durasi, label non-halal, logo, dan fakta.</span></li>
-        <li><b>H12 Senin</b><span>Manager mengirim email persetujuan ke Steven, dua hari sebelum upload, lengkap dengan hasil konten sebelumnya.</span></li>
-        <li><b>H14 Rabu</b><span>Setelah Steven setuju, Upload menulis caption dan menayangkan konten.</span></li>
-        <li><b>H+3</b><span>Performance Report mengukur hasil. Laporannya menjadi bahan riset di Chat A konten berikutnya.</span></li>
+      <ol class="timeline">
+        <li style="--i:0"><i class="node" aria-hidden="true"></i><b>H1 Kamis</b><span>Manager menetapkan pilar konten (A Catering harian, B Menu buku, atau C Ricebox). Trend Research mulai riset. Tiap 4 minggu, Competitor Analysis ikut.</span></li>
+        <li style="--i:1"><i class="node" aria-hidden="true"></i><b>H1–H3</b><span>Scriptwriter menulis naskah. Manager memeriksa, lalu menutup Chat A dengan Brief Konten dan pesan "pindah ke tab Code".</span></li>
+        <li style="--i:2"><i class="node" aria-hidden="true"></i><b>H4 Minggu</b><span>Manager meminta footage spesifik ke Steven, sekaligus fakta yang akan tampil di layar.</span></li>
+        <li style="--i:3"><i class="node" aria-hidden="true"></i><b>H4–H11</b><span>Video Editor merakit MP4 di Chat B. Manager memeriksa durasi, label non-halal, logo, dan fakta.</span></li>
+        <li style="--i:4"><i class="node" aria-hidden="true"></i><b>H12 Senin</b><span>Manager mengirim email persetujuan ke Steven, dua hari sebelum upload, lengkap dengan hasil konten sebelumnya.</span></li>
+        <li style="--i:5"><i class="node" aria-hidden="true"></i><b>H14 Rabu</b><span>Setelah Steven setuju, Upload menulis caption dan menayangkan konten.</span></li>
+        <li style="--i:6"><i class="node" aria-hidden="true"></i><b>H+3</b><span>Performance Report mengukur hasil. Laporannya menjadi bahan riset di Chat A konten berikutnya.</span></li>
       </ol>
 
-      <h3>Aturan yang menjaga tim tetap rapi</h3>
+      <h3 class="rv">Aturan yang menjaga tim tetap rapi</h3>
       <div class="rules">
-        <div class="rule"><b>Anti-loop</b>Semua serah-terima lewat Manager. Kalau agent boleh saling panggil, permintaan bisa bolak-balik tanpa henti.</div>
-        <div class="rule"><b>Ulang maksimal 3 kali</b>Hasil yang salah dikembalikan dengan alasan spesifik. Setelah 3 kali gagal, Manager berhenti dan bertanya ke Steven.</div>
-        <div class="rule"><b>Jejak Skill</b>Setiap agent menutup hasilnya dengan daftar skill yang benar-benar dipanggil. Manager mencocokkan daftar itu dengan yang terlihat di chat.</div>
-        <div class="rule"><b>Persetujuan manusia</b>Tidak ada konten yang diupload tanpa persetujuan Steven. Jadwal yang mepet tidak jadi alasan.</div>
+        <div class="rule rv" style="--i:1"><b>Anti-loop</b>Semua serah-terima lewat Manager. Kalau agent boleh saling panggil, permintaan bisa bolak-balik tanpa henti.</div>
+        <div class="rule rv" style="--i:2"><b>Ulang maksimal 3 kali</b>Hasil yang salah dikembalikan dengan alasan spesifik. Setelah 3 kali gagal, Manager berhenti dan bertanya ke Steven.</div>
+        <div class="rule rv" style="--i:3"><b>Jejak Skill</b>Setiap agent menutup hasilnya dengan daftar skill yang benar-benar dipanggil. Manager mencocokkan daftar itu dengan yang terlihat di chat.</div>
+        <div class="rule rv" style="--i:4"><b>Persetujuan manusia</b>Tidak ada konten yang diupload tanpa persetujuan Steven. Jadwal yang mepet tidak jadi alasan.</div>
       </div>
     </div>
   </div>
@@ -336,20 +434,20 @@ footer p{margin:0 0 6px}
 <!-- 05 -->
 <section class="q" id="q5">
   <div class="wrap">
-    <div class="qhead">
-      <div class="qnum">05</div>
+    <div class="qhead rv">
+      <div class="qnum">05</div><!-- taste-skill-ignore: mirrors the assignment brief, questions 01–05 -->
       <div>
         <h2>Hal yang perlu disimpan di memori</h2>
         <p class="ask">Apa yang harus diingat tim dari satu konten ke konten berikutnya</p>
       </div>
     </div>
     <div class="body">
-      <div class="prose">
+      <div class="prose rv" style="--i:1">
         <p>Memori dibagi menurut seberapa sering isinya berubah. Yang jarang berubah jadi pegangan tetap. Yang berubah tiap siklus dicatat sebagai log. Semuanya disimpan di Project Claude "Konten Instagram Chiangkong" dan di folder kerja tab Code (file CLAUDE.md dan subfolder soul).</p>
       </div>
       <div class="mem">
-        <div class="mem-row mem-head"><span>Jenis memori</span><span>Isinya</span><span>Siapa yang memakai</span></div>
-        <div class="mem-row">
+        <div class="mem-head"><span>Jenis memori</span><span>Isinya</span><span>Siapa yang memakai</span></div>
+        <div class="mem-row rv" style="--i:0">
           <h3>Identitas &amp; brand</h3>
           <ul>
             <li>Profil bisnis: lokasi depot, lini layanan, area antar catering</li>
@@ -359,7 +457,7 @@ footer p{margin:0 0 6px}
           </ul>
           <span class="where">Semua agent, terutama Video Editor dan Scriptwriter</span>
         </div>
-        <div class="mem-row">
+        <div class="mem-row rv" style="--i:1">
           <h3>Fakta &amp; harga</h3>
           <ul>
             <li>Harga catering, promo member, jam buka, nomor WhatsApp, jam antar</li>
@@ -368,7 +466,7 @@ footer p{margin:0 0 6px}
           </ul>
           <span class="where">Manager (cek), Scriptwriter, Video Editor, Upload</span>
         </div>
-        <div class="mem-row">
+        <div class="mem-row rv" style="--i:2">
           <h3>Aturan kerja</h3>
           <ul>
             <li>Siklus mulai Kamis, upload Rabu, persetujuan H-2</li>
@@ -379,7 +477,7 @@ footer p{margin:0 0 6px}
           </ul>
           <span class="where">Manager untuk menegakkan, semua agent untuk dipatuhi</span>
         </div>
-        <div class="mem-row">
+        <div class="mem-row rv" style="--i:3">
           <h3>Log berjalan</h3>
           <ul>
             <li>Nomor konten dan pilar terakhir</li>
@@ -389,7 +487,7 @@ footer p{margin:0 0 6px}
           </ul>
           <span class="where">Trend Research, Competitor, Video Editor</span>
         </div>
-        <div class="mem-row">
+        <div class="mem-row rv" style="--i:4">
           <h3>Hasil &amp; pelajaran</h3>
           <ul>
             <li>Ringkasan performa tiap konten: views, share, kunjungan profil, chat WA</li>
@@ -399,7 +497,7 @@ footer p{margin:0 0 6px}
           <span class="where">Performance Report menulis, Manager dan Trend Research membaca</span>
         </div>
       </div>
-      <div class="never prose">
+      <div class="never prose rv">
         <h3>Yang tidak disimpan</h3>
         <ul>
           <li>Data pribadi pelanggan, seperti nama, alamat, dan nomor HP</li>
@@ -416,10 +514,60 @@ footer p{margin:0 0 6px}
 
 <footer>
   <div class="wrap">
-    <p>Soul Tim Chiang Kong: blueprint tim AI agent untuk Rumah Makan &amp; Catering Chiangkong, Surabaya.</p>
+    <p class="big">Soul Tim Chiang Kong</p>
+    <p>Blueprint tim AI agent untuk Rumah Makan &amp; Catering Chiangkong, Surabaya.</p>
     <p>Disusun oleh Steven Johan untuk Challenge The Blueprint, AI Creator Labs, Oktober 2026.</p>
   </div>
 </footer>
 
+<script>
+(function(){
+  var root=document.documentElement;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('ready')})});
+  var targets=document.querySelectorAll('.rv,.tickets');
+  if(reduce||!('IntersectionObserver' in window)){
+    targets.forEach(function(el){el.classList.add('in','done')});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var el=e.target; el.classList.add('in'); io.unobserve(el);
+        if(el.classList.contains('tickets')){
+          setTimeout(function(){el.classList.add('done')},1600);
+        }
+      });
+    },{threshold:.15,rootMargin:'0px 0px -8% 0px'});
+    targets.forEach(function(el){io.observe(el)});
+  }
+  /* Motion #43: the gold line follows the scroll; each node flips gold when the line reaches it */
+  var tl=document.querySelector('.timeline');
+  if(tl&&!reduce){
+    var items=[].slice.call(tl.querySelectorAll('li')),ticking=false;
+    var update=function(){
+      ticking=false;
+      var r=tl.getBoundingClientRect(),vh=window.innerHeight;
+      var p=Math.min(1,Math.max(0,(vh*0.6-r.top)/r.height));
+      tl.style.setProperty('--p',p.toFixed(3));
+      var edge=r.top+p*r.height;
+      items.forEach(function(li){li.classList.toggle('hit',li.getBoundingClientRect().top+20<=edge)});
+    };
+    update();
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+    window.addEventListener('resize',update);
+  }
+  /* active link in the sticky nav */
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  if('IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)});
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('section.q').forEach(function(s){so.observe(s)});
+  }
+})();
+</script>
 </body>
 </html>
