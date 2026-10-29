@@ -46,10 +46,9 @@ strong{font-weight:600}
 .hero .facts{font-size:1rem;color:var(--gold);font-weight:500;margin:0}
 
 .mark{position:relative;justify-self:center;text-align:center}
-.han{font-family:var(--han);font-weight:900;color:var(--gold);font-size:clamp(6rem,13vw,11rem);line-height:1;margin:0}
-.han span{display:block}
-.steam{position:absolute;left:50%;bottom:100%;width:130px;height:130px;margin-left:-65px;margin-bottom:-6px;pointer-events:none;overflow:visible}
-.steam.s2{display:none}
+.han{font-family:var(--han);font-weight:900;color:var(--gold);font-size:clamp(5rem,10vw,8.5rem);line-height:1;margin:0;white-space:nowrap;padding-top:.75em}
+.han .ch{display:inline-block;position:relative}
+.steam{position:absolute;left:50%;bottom:100%;width:.7em;height:.75em;margin-left:-.35em;margin-bottom:-.04em;pointer-events:none;overflow:visible}
 .steam path{fill:none;stroke:var(--gold);stroke-width:7;stroke-linecap:round;opacity:0}
 
 /* Motion #3 Mask / wipe reveal — hero headline */
@@ -61,9 +60,9 @@ strong{font-weight:600}
 .js.ready .hero .facts{transition-delay:.6s}
 
 /* Motion #8 Logo twist & drop — 长江 */
-.js .han span{opacity:0;transform:translateY(-90px) rotate(-28deg) scale(.8)}
-.js.ready .han span{animation:twistdrop 1.15s var(--ease-out) forwards}
-.js.ready .han span:nth-child(2){animation-delay:.18s}
+.js .han .ch{opacity:0;transform:translateY(-90px) rotate(-28deg) scale(.8)}
+.js.ready .han .ch{animation:twistdrop 1.15s var(--ease-out) forwards}
+.js.ready .han .ch:nth-child(2){animation-delay:.18s}
 @keyframes twistdrop{
   0%{opacity:0;transform:translateY(-90px) rotate(-28deg) scale(.8)}
   60%{opacity:1;transform:translateY(8px) rotate(5deg) scale(1.03)}
@@ -74,6 +73,9 @@ strong{font-weight:600}
 .js.ready .steam path{animation:steam 4.2s ease-in-out infinite}
 .js.ready .steam path:nth-child(2){animation-delay:1.4s}
 .js.ready .steam path:nth-child(3){animation-delay:2.8s}
+.js.ready .s2 path{animation-delay:.7s}
+.js.ready .s2 path:nth-child(2){animation-delay:2.1s}
+.js.ready .s2 path:nth-child(3){animation-delay:3.5s}
 @keyframes steam{
   0%{opacity:0;transform:translateY(30px) scaleY(.85)}
   30%{opacity:.9}
@@ -205,15 +207,9 @@ footer .big{font-size:clamp(2rem,6vw,4rem);font-weight:800;color:var(--cream);le
 footer p{margin:0 0 6px}
 
 @media (max-width:860px){
-  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:96px}
+  .hero .wrap{grid-template-columns:1fr;min-height:0;padding-top:24px}
   .mark{order:-1;justify-self:start}
   .han{font-size:5rem;text-align:left}
-  .han span{display:inline-block}
-  .steam{left:40px;width:80px;height:80px;margin-left:-40px;margin-bottom:-4px}
-  .steam.s2{display:block;left:120px}
-  .steam.s2 path{animation-delay:.7s!important}
-  .steam.s2 path:nth-child(2){animation-delay:2.1s!important}
-  .steam.s2 path:nth-child(3){animation-delay:3.5s!important}
   .qhead{grid-template-columns:1fr;gap:6px}
   .body{margin-left:0}
   .rail-wrap{margin-left:0}
@@ -230,7 +226,7 @@ footer p{margin:0 0 6px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .rv,.js .hero h1 .ln span,.js .hero .lead,.js .hero .facts,.js .han span,.js .ticket,
+  .js .rv,.js .hero h1 .ln span,.js .hero .lead,.js .hero .facts,.js .han .ch,.js .ticket,
   .js .timeline .node,.js .timeline li > b,.js .timeline li > span{opacity:1!important;transform:none!important}
   .timeline::after{transform:none!important}
   .ticket{transform:rotate(var(--tilt))!important}
@@ -248,17 +244,15 @@ footer p{margin:0 0 6px}
       <p class="facts">Satu Manager, enam agent, satu tujuan: order catering harian naik.</p>
     </div>
     <div class="mark" aria-hidden="true">
-      <svg class="steam" viewBox="0 0 150 160">
+<p class="han"><span class="ch"><svg class="steam" viewBox="0 0 150 160">
         <path d="M45 150 C25 115 65 95 45 60 C30 35 55 20 50 5"/>
         <path d="M78 150 C58 112 98 92 78 55 C63 30 88 15 83 0"/>
         <path d="M110 150 C90 118 130 98 110 64 C95 40 120 25 115 10"/>
-      </svg>
-      <svg class="steam s2" viewBox="0 0 150 160">
+      </svg>长</span><span class="ch"><svg class="steam s2" viewBox="0 0 150 160">
         <path d="M45 150 C25 115 65 95 45 60 C30 35 55 20 50 5"/>
         <path d="M78 150 C58 112 98 92 78 55 C63 30 88 15 83 0"/>
         <path d="M110 150 C90 118 130 98 110 64 C95 40 120 25 115 10"/>
-      </svg>
-      <p class="han"><span>长</span><span>江</span></p>
+      </svg>江</span></p>
     </div>
   </div>
 </header>
